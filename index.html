@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" co           ntent="width=device-width, initial-scale=3.0">
+
+<title>สภานักเรียน</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:sans-serif;
+
+    background-image:
+    linear-gradient(
+    rgba(255,255,255,0.6),
+    rgba(255,255,255,0.6)
+    ),
+    url('https://scontent.xx.fbcdn.net/v/t1.15752-9/687806555_1543052250552120_8954303956471605820_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOmNvbnRyb2wiXX0%3D&_nc_ohc=BEjugh2ZPTsQ7kNvwGfWM88&_nc_oc=AdokPePAJSrycCnVrdwB18I7A5JLEzVN7lO2ToGbaBo9pct52UQv1_AxI_T7RhxA551T1YLs1y5mnScWwXatL1Tw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD5QEmOw3K_1nwkMICnhZDIyTf9Dri8TYMBM3RWxBEWSvsIg&oe=6A2967BE');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* หัวเว็บ */
+.header{
+    background:#004aad;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+/* กล่องรวม */
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+/* กล่องหมวด */
+.card{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h2{
+    color:#004aad;
+}
+
+/* ปุ่ม */
+button{
+    background:#004aad;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#003080;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>เว็บไซต์สภานักเรียน</h1>
+    <p>SakaeoSchool Student Council</p>
+</div>
+
+<div class="container">
+
+    <!-- ประชาสัมพันธ์ -->
+    <div class="card">
+        <h2>📢 ประชาสัมพันธ์</h2>
+        <p>ประชาสัมพันธ์ จากสภา โรงเรียนสระเเก้ว</p>
+        <!-- <button>ดูเพิ่มเติม</button> -->
+        <a href ="news1.html" class="back"><button>ดูเพิ่มเติม</button></a>
+    </div>
+
+    <!-- สมาชิก -->
+    <div class="card">
+        <h2>👨‍🎓 รายชื่อสมาชิกสภา</h2>
+        <p>
+        - ประธานนักเรียน<br>
+        - รองประธาน<br>
+        - ฝ่ายกิจกรรม
+        </p>
+       <button>ดูรายชื่อ</button>
+        <p style="color: red;">ยังไม่เปิดทำการ</p>
+    </div>
+
+    <!-- กิจกรรม -->
+    <div class="card">
+        <h2>🎉 ประกาศกิจกรรม</h2>
+        <p>รวมกิจกรรมของโรงเรียน</p>
+        <button>ดูกิจกรรม</button>
+        <p style="color: red;">ยังไม่เปิดทำการ</p>
+    </div>
+
+    <!-- ติดต่อ -->
+    <div class="card">
+        <h2>📞 ติดต่อ</h2>
+        <p>ส่งความคิดเห็นหรือข้อเสนอแนะ</p>
+        <a href ="Contrack1.html" class="back"><button>ติดต่อเรา</button></a>
+    </div>
+    <br>
+        <!-- เกม -->
+    <div class="card">
+        <h2>🎮เกมที่จะนำมาจัดเเข่ง</h2>
+        <p>ประชาสัมพันธ์ จากสภา    โรงเรียนสระเเก้ว</p>
+        <a href="Vostgame.html" class="back">
+        <button>ดูเพิ่มเติม</button>
+        </a> 
+        <p style="color: red;">งดกดเล่นนะครับ นับคะเเนนรอบต่อรอบ 
+            ถ้าเกิดปัญหา ทักหาพี่ๆสภาหลังบ้านได้เลยครับ</p>
+        </p>
+    </div>
+
+     <div class="card">
+        <h2> 📕 Sheet สรุปการเรียน </h2>
+        <p>ประชาสัมพันธ์ จากสภา โรงเรียนสระเเก้ว</p>
+        <a href="" class="back">
+        <button>ดูเพิ่มเติม</button>
+        </a> 
+        <p style="color: red;">ยังไม่เปิดทำการ</p>
+    </div>
+
+    <div class="card">
+        <h2> 📈 กราฟ วางทุกงานอ่านทุกคน </h2>
+        <p>ประชาสัมพันธ์ จากสภา โรงเรียนสระเเก้ว</p>
+        <a href="......" class="back">
+        <button>ดูเพิ่มเติม</button>
+        </a> 
+        <p style="color: red;">ยังไม่เปิดทำการ</p>
+    </div>
+
+
+    <div class="card">
+        <h2> กล่องปลดทุกข์กับพี่ๆสภา </h2>
+        <p>
+            พี่ๆรับฟังอย่างเดียวน้า ไม่สามารถทักตอบด้าย สบายหายห่วง
+           
+        </p>
+        <a href="Messagepeople.html" class="back">
+        <button>ดูเพิ่มเติม</button>
+        </a> 
+        
+    </div>
+    <div class="clock-box">
+
+<h2>🕒 เวลาปัจจุบัน</h2>
+
+<div id="clock">
+00:00:00
+</div>
+
+</div>
+</div>
+<script>
+
+function updateClock(){
+
+const now = new Date();
+
+let hours =
+String(now.getHours()).padStart(2,'0');
+
+let minutes =
+String(now.getMinutes()).padStart(2,'0');
+
+let seconds =
+String(now.getSeconds()).padStart(2,'0');
+
+document.getElementById("clock").innerHTML =
+
+hours + ":" + minutes + ":" + seconds;
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+</script>
+</body>
+</html>

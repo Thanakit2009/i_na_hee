@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎮 E-Sport Vote Realtime</title>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:sans-serif;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.9)
+    ),
+
+    url("https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2070&auto=format&fit=crop");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:white;
+}
+
+/* หัวเว็บ */
+.header{
+
+    text-align:center;
+
+    padding:60px 20px;
+}
+
+.header h1{
+
+    font-size:55px;
+
+    color:#00bfff;
+
+    text-shadow:0 0 20px #00bfff;
+}
+
+.header p{
+
+    margin-top:10px;
+
+    color:#ccc;
+
+    font-size:18px;
+}
+
+/* กล่องรวม */
+.container{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+    padding:40px;
+}
+
+/* การ์ด */
+.card{
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(12px);
+
+    transition:0.4s;
+
+    box-shadow:
+    0 0 20px rgba(0,0,0,0.5);
+
+    text-align:center;
+}
+
+/* ชี้เมาส์ */
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 0 30px #00bfff;
+}
+
+/* รูป */
+.card img{
+
+    width:100%;
+
+    height:230px;
+
+    object-fit:cover;
+}
+
+/* เนื้อหา */
+.content{
+
+    padding:25px;
+}
+
+.content h2{
+
+    margin-bottom:10px;
+
+    color:#00bfff;
+
+    font-size:32px;
+}
+
+.content p{
+
+    color:#ddd;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+}
+
+/* คะแนน */
+.score{
+
+    font-size:45px;
+
+    margin-bottom:20px;
+
+    color:#00ffae;
+
+    text-shadow:0 0 10px #00ffae;
+}
+
+/* ปุ่ม */
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#00bfff;
+
+    color:black;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+/* ชี้ปุ่ม */
+button:hover{
+
+    background:white;
+
+    transform:scale(1.03);
+}
+
+/* ปุ่มล่าง */
+.bottom{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    padding-bottom:40px;
+
+    flex-wrap:wrap;
+}
+
+.bottom button{
+
+    width:220px;
+}
+
+/* มือถือ */
+@media(max-width:600px){
+
+.header h1{
+    font-size:38px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>🎮 E-Sport Vote</h1>
+
+<p>
+โหวตเกมที่อยากให้จัดแข่งขันภายในโรงเรียน 🔥
+</p>
+
+</div>
+
+<div class="container">
+
+<!-- VALORANT -->
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
+
+<div class="content">
+
+<h2>VALORANT</h2>
+
+<p>
+เกมยิง Tactical FPS
+ใช้สกิลและทีมเวิร์คสุดเข้มข้น
+</p>
+
+<div class="score" id="valorantScore">
+0
+</div>
+
+<button onclick="vote('valorant')">
+🗳️ โหวตเกมนี้
+</button>
+
+</div>
+</div>
+
+<!-- FREE FIRE -->
+<div class="card">
+
+<img src="https://freefiremobile-a.akamaihd.net/ffwebsite/images/wallpaper/pop/039.jpg">
+
+<div class="content">
+
+<h2>FREE FIRE</h2>
+
+<p>
+Battle Royale สุดมันส์
+เอาตัวรอดและวัดความไว
+</p>
+
+<div class="score" id="freefireScore">
+0
+</div>
+
+<button onclick="vote('freefire')">
+🗳️ โหวตเกมนี้
+</button>
+
+</div>
+</div>
+
+<!-- E FOOTBALL -->
+<div class="card">
+
+<img src="https://th.bing.com/th/id/R.2b3b69d8e6771470fc90ad9b8a86b97b?rik=4At2aPL0GoGgZw&pid=ImgRaw&r=0">
+
+<div class="content">
+
+<h2>E FOOTBALL</h2>
+
+<p>
+เกมฟุตบอลสุดมันส์
+วัดสกิลและแผนการเล่น
+</p>
+
+<div class="score" id="footballScore">
+0
+</div>
+
+<button onclick="vote('football')">
+🗳️ โหวตเกมนี้
+</button>
+
+</div>
+</div>
+
+</div>
+
+<!-- ปุ่มล่าง -->
+<div class="bottom">
+
+<a href="index.html">
+<button>
+⬅ กลับหน้าแรก
+</button>
+</a>
+
+<button onclick="resetVote()">
+🔄 รีเซ็ตโหวต
+</button>
+
+</div>
+
+<script>
+
+/* Firebase Config */
+const firebaseConfig = {
+  apiKey: "AIzaSyBVIqOL_lEk8NHEm1AY5BDCQElLug-CESA",
+  authDomain: "game-596c5.firebaseapp.com",
+  databaseURL: "https://game-596c5-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "game-596c5",
+  storageBucket: "game-596c5.firebasestorage.app",
+  messagingSenderId: "894207662456",
+  appId: "1:894207662456:web:823ae6276e47ce64fd508d",
+  measurementId: "G-0M731PGHTY"
+};
+
+/* เริ่ม Firebase */
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
+
+/* โหลดคะแนนแบบเรียลไทม์ */
+db.ref("votes").on("value", (snapshot) => {
+
+    const data = snapshot.val() || {};
+
+    document.getElementById("valorantScore").innerHTML =
+    data.valorant || 0;
+
+    document.getElementById("freefireScore").innerHTML =
+    data.freefire || 0;
+
+    document.getElementById("footballScore").innerHTML =
+    data.football || 0;
+
+});
+
+/* โหวต */
+function vote(game){
+
+    /* กันโหวตซ้ำ */
+
+    if(localStorage.getItem("voted")){
+
+        alert("คุณโหวตไปแล้ว!");
+
+        return;
+    }
+
+    /* เพิ่มคะแนน */
+
+    db.ref("votes/" + game).transaction((current) => {
+
+        return (current || 0) + 1;
+
+    });
+
+    localStorage.setItem("voted","yes");
+
+    alert("โหวตสำเร็จ 🔥");
+}
+
+/* รีเซ็ต */
+function resetVote(){
+
+    db.ref("votes").set({
+
+        valorant:0,
+        freefire:0,
+        football:0
+
+    });
+
+    localStorage.removeItem("voted");
+
+    alert("รีเซ็ตสำเร็จ");
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>กล่องร้องทุกข์</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:sans-serif;
+
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-image:
+    linear-gradient(
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.4)
+    ),
+
+    url("https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=2070&auto=format&fit=crop");
+
+    background-size:cover;
+    background-position:center;
+}
+
+/* กล่องหลัก */
+.box{
+
+    width:420px;
+
+    padding:35px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,0.25);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+    0 8px 32px rgba(0,0,0,0.2);
+
+    text-align:center;
+
+    animation:fade 1s ease;
+}
+
+/* หัวข้อ */
+.box h1{
+
+    color:#004aad;
+
+    margin-bottom:10px;
+
+    font-size:35px;
+}
+
+/* ข้อความ */
+.box p{
+
+    color:#333;
+
+    margin-bottom:25px;
+
+    font-size:15px;
+}
+
+/* ช่องกรอก */
+input,
+textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:15px;
+
+    margin-bottom:15px;
+
+    font-size:15px;
+
+    background:rgba(255,255,255,0.7);
+
+    outline:none;
+}
+
+/* กล่องข้อความ */
+textarea{
+
+    height:160px;
+
+    resize:none;
+}
+
+/* ปุ่ม */
+button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#004aad;
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+/* ชี้เมาส์ */
+button:hover{
+
+    background:#003080;
+
+    transform:scale(1.03);
+}
+
+/* ปุ่มกลับ */
+.back-btn{
+
+    margin-top:10px;
+
+    background:white;
+
+    color:#004aad;
+
+    border:2px solid #004aad;
+}
+
+.back-btn:hover{
+
+    background:#004aad;
+
+    color:white;
+}
+
+/* Animation */
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* มือถือ */
+@media(max-width:500px){
+
+.box{
+    width:90%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>📦</h1>
+
+<h1>กล่องร้องทุกข์</h1>
+
+<p>
+สามารถส่งข้อความหรือปัญหาต่างๆ
+ถึงพี่ๆสภาได้เลย 💙
+</p>
+
+<form action="https://formsubmit.co/thanakit070952@gmail.com" method="POST">
+
+<input
+type="text"
+name="name"
+placeholder="ชื่อ (ไม่ใส่ก็ได้)"
+>
+
+<textarea
+name="message"
+placeholder="พิมพ์ข้อความของคุณ..."
+required
+></textarea>
+
+<button type="submit">
+ส่งข้อความ
+</button>
+
+</form>
+
+<!-- ปุ่มกลับ -->
+<a href="index.html">
+
+<button type="button" class="back-btn">
+⬅ กลับหน้าแรก
+</button>
+
+</a>
+
+</div>
+
+</body>
+</html>
